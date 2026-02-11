@@ -6,6 +6,7 @@ const getAllJobs = async (req, res) => {
   const jobs = await Job.find({ createdBy: req.user.userId }).sort('createdAt')
   res.status(StatusCodes.OK).json({ jobs, count: jobs.length })
 }
+
 const getJob = async (req, res) => {
   const {
     user: { userId },
@@ -38,14 +39,17 @@ const updateJob = async (req, res) => {
   if (company === '' || position === '') {
     throw new BadRequestError('Company or Position fields cannot be empty')
   }
-  const job = await Job.findByIdAndUpdate(
+
+  const job = await Job.findOneAndUpdate(
     { _id: jobId, createdBy: userId },
     req.body,
     { new: true, runValidators: true }
   )
+
   if (!job) {
     throw new NotFoundError(`No job with id ${jobId}`)
   }
+
   res.status(StatusCodes.OK).json({ job })
 }
 
@@ -55,14 +59,16 @@ const deleteJob = async (req, res) => {
     params: { id: jobId },
   } = req
 
-  const job = await Job.findByIdAndRemove({
+  const job = await Job.findOneAndDelete({
     _id: jobId,
     createdBy: userId,
   })
+
   if (!job) {
     throw new NotFoundError(`No job with id ${jobId}`)
   }
-  res.status(StatusCodes.OK).send()
+
+  res.status(StatusCodes.OK).json({ msg: 'The entry was deleted.' })
 }
 
 module.exports = {
