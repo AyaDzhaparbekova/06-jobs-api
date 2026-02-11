@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jobs App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2, h3 {
+      color: #696666;
+    }
+
+    #message {
+      color: rgb(101, 97, 97);
+      margin-bottom: 10px;
+    }
+
+    div {
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px 0;
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 8px 15px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      background-color: #474748;
+      color: white;
+      border-radius: 4px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: #034373;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    th, td {
+      border: 1px solid #6d6a6a;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4a4c4c;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #add-edit {
+      max-width: 400px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    #jobs {
+      max-width: 650px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 id="message"></h2>
+
+  <div id="login-register">
+    <button id="show-login">Login</button>
+    <button id="show-register">Register</button>
+  </div>
+
+ 
+  <div id="login" hidden>
+    <h3>Login</h3>
+    <input id="login-email" placeholder="Email" />
+    <input id="login-password" type="password" placeholder="Password" />
+    <button id="login-button">Login</button>
+  </div>
+
+
+  <div id="register" hidden>
+    <h3>Register</h3>
+    <input id="register-name" placeholder="Name" />
+    <input id="register-email" placeholder="Email" />
+    <input id="register-password" type="password" placeholder="Password" />
+    <button id="register-button">Register</button>
+  </div>
+
+ 
+  <div id="jobs" hidden>
+    <button id="add-job">Add Job</button>
+    <button id="logoff">Logoff</button>
+
+    <table id="jobs-table">
+      <tr id="jobs-table-header">
+        <th>Company</th>
+        <th>Position</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </table>
+  </div>
+
+  <div id="add-edit" hidden>
+    <h3 id="form-title">Add Job</h3>
+    <input id="company" placeholder="Company" />
+    <input id="position" placeholder="Position" />
+    <input id="status" placeholder="Status" />
+    <button id="save-job">save</button>
+  </div>
+
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
